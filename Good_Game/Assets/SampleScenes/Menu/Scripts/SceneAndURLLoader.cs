@@ -15,7 +15,7 @@ public class SceneAndURLLoader : MonoBehaviour
 
     public void SceneLoad(string sceneName)
 	{
-		//PauseMenu pauseMenu = (PauseMenu)FindObjectOfType(typeof(PauseMenu));
+		PauseMenu pauseMenu = (PauseMenu)FindObjectOfType(typeof(PauseMenu));
 		m_PauseMenu.MenuOff ();
 		SceneManager.LoadScene(sceneName);
 	}

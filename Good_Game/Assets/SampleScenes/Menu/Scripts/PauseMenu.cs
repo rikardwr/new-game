@@ -1,9 +1,61 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static bool GameIsPaused = false;
+
+    public GameObject pauseMenuUI;
+
+    void Update ()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Debug.Log("escape is pressed");
+
+            if(GameIsPaused)
+            {
+                Resume();
+                Debug.Log("game is not paused");
+            } else
+            {
+                Pause();
+                Debug.Log("game is paused");
+            }
+        }
+    }
+     public void Resume ()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+    
+    void Pause ()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("menu_main");
+        Debug.Log("Loading menu...");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting game...");
+        Application.Quit();
+    }
+
+
     private Toggle m_MenuToggle;
 	private float m_TimeScaleRef = 1f;
     private float m_VolumeRef = 1f;
@@ -49,15 +101,15 @@ public class PauseMenu : MonoBehaviour
     }
 
 
-#if !MOBILE_INPUT
-	void Update()
-	{
-		if(Input.GetKeyUp(KeyCode.Escape))
-		{
-		    m_MenuToggle.isOn = !m_MenuToggle.isOn;
-            Cursor.visible = m_MenuToggle.isOn;//force the cursor visible if anythign had hidden it
-		}
-	}
-#endif
+//#if !MOBILE_INPUT
+//	void Update()
+//	{
+//		if(Input.GetKeyUp(KeyCode.Escape))
+//		{
+//		    m_MenuToggle.isOn = !m_MenuToggle.isOn;
+//            Cursor.visible = m_MenuToggle.isOn;//force the cursor visible if anythign had hidden it
+//		}
+//	}
+//#endif
 
 }
