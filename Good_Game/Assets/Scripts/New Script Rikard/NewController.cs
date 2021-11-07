@@ -80,7 +80,6 @@ public class NewController : MonoBehaviour
 	private float _terminalVelocity = 53.0f;
 
 	// timeout deltatime
-
 	private float _jumpTimeoutDelta;
 	private float _attackTimeOutDelta;
 	private float _fallTimeoutDelta;
@@ -91,7 +90,6 @@ public class NewController : MonoBehaviour
 	[Tooltip("player is jumping")]
 	public bool jump = false;
 
-
 	private Animator animator;
 	private CharacterController controller;
 	private NewInput input;
@@ -101,26 +99,19 @@ public class NewController : MonoBehaviour
 
 	private bool hasAnimator;
 
-	private void Awake()
-	{
+	private void Awake() {
 		// get a reference to our main camera
-		if (mainCamera == null)
-		{
+		if (mainCamera == null) {
 			mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		}
 	}
 
-
-
-
 	// Start is called before the first frame update
-	void Start()
-	{
+	void Start() {
 
 		hasAnimator = TryGetComponent(out animator);
 		controller = GetComponent<CharacterController>();
 		input = GetComponent<NewInput>();
-
 
 		// reset our timeouts on start
 		_attackTimeOutDelta = AttackTimeOut;
@@ -128,64 +119,52 @@ public class NewController : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
-	{
+	void Update() {
 		hasAnimator = TryGetComponent(out animator);
 		JumpAndGravity();
 		//groundCheck();
 
 		Taunt();
 		Move();
+
+		if (Input.GetButtonDown("Fire1")) {
+			Debug.Log("Input mouse position");
+		}
 	}
 
-
-
-	private void LateUpdate()
-	{
+	private void LateUpdate() {
+		Debug.Log("LateUpdate()");
 		CameraRotation();
 	}
 
-	private void Taunt()
-	{
 
-
-		if (!attacking)
-		{
-			if (input.attack)
-			{
+	private void Taunt() {
+		if (!attacking) {
+			if (input.attack) {
 				animator.SetTrigger("Attack");
 				attacking = true;
-
 			}
 		}
-
-		if (!jump)
-		{
-			if (input.jump)
-			{
-				animator.SetTrigger("Jump");
-				jump = true;
-
-			}
-		}
-
-		else
-		{
-			_attackTimeOutDelta -= Time.deltaTime;
-			input.attack = false;
-		}
-		if (_attackTimeOutDelta <= 0)
-		{
+		if (_attackTimeOutDelta <= 0) {
 			_attackTimeOutDelta = AttackTimeOut;
 			attacking = false;
 		}
+		// if (!jump) {
+		// Debug.Log("Taunt() if !attacking");
+		// 	if (input.jump) {
+		// 		animator.SetTrigger("Jump");
+		// 		jump = true;
+		// 	}
+		// } else {
+		// 	Debug.Log("Taunt() if !attacking --> else");
+		// 	_attackTimeOutDelta -= Time.deltaTime;
+		// 	input.attack = false;
+		// }
 
 		//input.attack = false;
-
 	}
 
-	private void Move()
-	{
+	private void Move() {
 		// set target speed based on move speed, sprint speed and if sprint is pressed
 		float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -202,17 +181,16 @@ public class NewController : MonoBehaviour
 		float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
 
 		// accelerate or decelerate to target speed
-		if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
-		{
+		if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset) {
+			Debug.Log("Move() >> if");
 			// creates curved result rather than a linear one giving a more organic speed change
 			// note T in Lerp is clamped, so we don't need to clamp our speed
 			_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
 
 			// round speed to 3 decimal places
 			_speed = Mathf.Round(_speed * 1000f) / 1000f;
-		}
-		else
-		{
+		} else {
+			Debug.Log("Move() >> else");
 			_speed = targetSpeed;
 		}
 		_animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
@@ -222,8 +200,7 @@ public class NewController : MonoBehaviour
 
 		// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 		// if there is a move input rotate player when the player is moving
-		if (input.move != Vector2.zero)
-		{
+		if (input.move != Vector2.zero) {
 			_targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
 			float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
 
@@ -231,26 +208,22 @@ public class NewController : MonoBehaviour
 			transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 		}
 
-
 		Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
 		// move the player
 		controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
 		// update animator if using character
-		if (hasAnimator)
-		{
+		if (hasAnimator) {
 			animator.SetFloat("Speed", _animationBlend);
 			/*animator.SetFloat("MoveSpeed",animIDMotionSpeed, inputMagnitude);*/
 		}
 	}
 
-
-	private void CameraRotation()
-	{
+	private void CameraRotation() {
 		// if there is an input and camera position is not fixed
-		if (input.look.sqrMagnitude >= threshold && !LockCameraPosition)
-		{
+		if (input.look.sqrMagnitude >= threshold && !LockCameraPosition) {
+		Debug.Log("CameraRotation() >> if");
 			_cinemachineTargetYaw += input.look.x * Time.deltaTime;
 			_cinemachineTargetPitch += input.look.y * Time.deltaTime;
 		}
@@ -263,72 +236,57 @@ public class NewController : MonoBehaviour
 		CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
 	}
 
-
-	private void JumpAndGravity()
-	{
-		if (Grounded)
-		{
+	private void JumpAndGravity() {
+		if (Grounded) {
+		Debug.Log("JumpAndGravity() >> grounded");
 			// reset the fall timeout timer
 			_fallTimeoutDelta = FallTimeout;
 
 			// update animator if using character
-			/*
-			if (hasAnimator)
-			{
-				animator.SetBool(animIDJump, false);
-				_animator.SetBool(_animIDFreeFall, false);
+			// if (hasAnimator)
+			// {
+			// 	animator.SetBool(_animIDJump, false);
+			// 	animator.SetBool(_animIDFreeFall, false);
+			// }
+			// // stop our velocity dropping infinitely when grounded
+			// if (_verticalVelocity < 0.0f) {
+			// 	_verticalVelocity = -2f;
+			// }
+			// Jump
+			if (input.jump && _jumpTimeoutDelta <= 0.0f) {
+				// the square root of H * -2 * G = how much velocity needed to reach desired height
+				_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
 			}
-			*/
-
-			// stop our velocity dropping infinitely when grounded
-			if (_verticalVelocity < 0.0f)
-			{
-				_verticalVelocity = -2f;
+			// jump timeout
+			if (_jumpTimeoutDelta >= 0.0f) {
+				_jumpTimeoutDelta -= Time.deltaTime;
 			}
+		} else {
+		Debug.Log("JumpAndGravity() >> not grounded");
+			// reset the jump timeout timer
+			_jumpTimeoutDelta = JumpTimeout;
 
-		// Jump
-		if (input.jump && _jumpTimeoutDelta <= 0.0f)
-		{
-			// the square root of H * -2 * G = how much velocity needed to reach desired height
-			_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
+			// fall timeout
+			if (_fallTimeoutDelta >= 0.0f) {
+				_fallTimeoutDelta -= Time.deltaTime;
+			}
+	
+			// if we are not grounded, do not jump
+			input.jump = false;
 		}
-
-				// jump timeout
-				if (_jumpTimeoutDelta >= 0.0f)
-				{
-					_jumpTimeoutDelta -= Time.deltaTime;
-				}
-			}
-
-			else
-			{
-				// reset the jump timeout timer
-				_jumpTimeoutDelta = JumpTimeout;
-
-				// fall timeout
-				if (_fallTimeoutDelta >= 0.0f)
-				{
-					_fallTimeoutDelta -= Time.deltaTime;
-				}
-        
-				// if we are not grounded, do not jump
-				input.jump = false;
-			}
-
-			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-			if (_verticalVelocity < _terminalVelocity)
-			{
-				_verticalVelocity += Gravity * Time.deltaTime;
-			}
-		}
-
-
-		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-		{
-			if (lfAngle < -360f) lfAngle += 360f;
-			if (lfAngle > 360f) lfAngle -= 360f;
-			return Mathf.Clamp(lfAngle, lfMin, lfMax);
+		// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+		if (_verticalVelocity < _terminalVelocity) {
+		Debug.Log("applying gravity over time");
+			_verticalVelocity += Gravity * Time.deltaTime;
 		}
 	}
+
+	private static float ClampAngle(float lfAngle, float lfMin, float lfMax) {
+		Debug.Log("ClampAngle()");
+		if (lfAngle < -360f) lfAngle += 360f;
+		if (lfAngle > 360f) lfAngle -= 360f;
+		return Mathf.Clamp(lfAngle, lfMin, lfMax);
+	}
+}
 
