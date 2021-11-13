@@ -58,3 +58,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Good_Game/Assets/SampleScenes/Scenes/CharacterThirdPersonAI/NavMesh.asset
+Good_Game/Assets/SampleScenes/Navmesh/CarAI.asset
