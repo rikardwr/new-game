@@ -7,6 +7,6 @@ public class Introduction : MonoBehaviour
 {
     void OnEnable()
     {
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("SceneXXXEEE", LoadSceneMode.Single);
     }
 }
