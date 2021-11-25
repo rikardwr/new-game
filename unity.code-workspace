@@ -3,7 +3,15 @@
 		{
 			"name": "maximus",
 			"path": "."
+		},
+		{
+			"name": "Event_Hub_v2",
+			"path": "..\\..\\..\\Prosject_Nrf\\Event_hub\\Event_Hub_v2"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"nrf-connect.applications": [
+			"${workspaceFolder:Event_Hub_v2}"
+		]
+	}
 }
