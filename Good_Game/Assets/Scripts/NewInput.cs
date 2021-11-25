@@ -25,7 +25,7 @@ public class NewInput : MonoBehaviour
     public void OnMove(InputValue value)
     {
         MoveInput(value.Get<Vector2>());
-        Debug.Log("NewInput -> OnMove");
+        // Debug.Log("NewInput -> OnMove");
     }
 
     public void OnLook(InputValue value)
