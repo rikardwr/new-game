@@ -10919,6 +10919,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 638473865}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &470332942
 Animator:
@@ -22868,7 +22869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &978760856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32029,6 +32030,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 1785998941}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &1384754712
 Animator:
@@ -34770,6 +34772,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 345255116}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &1530695334
 Animator:
@@ -39036,6 +39039,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 92422679}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &1726063498
 Animator:
@@ -43303,6 +43307,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 725068208}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &1893323825
 Animator:
@@ -43594,6 +43599,7 @@ MonoBehaviour:
   jump: 0
   maxHealth: 100
   meleeHealthBar: {fileID: 571119115}
+  sword: {fileID: 0}
   focus: {fileID: 0}
 --- !u!95 &1897628583
 Animator:
