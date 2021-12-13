@@ -67,4 +67,8 @@ public class Sword : MonoBehaviour
             // PlayerHealth.TakeDamage(damage);
         }
     }
+    public void addDamage(int dmg)
+    {
+        dmg = damage;
+    }
 }
