@@ -21523,10 +21523,8 @@ GameObject:
   - component: {fileID: 637904355}
   - component: {fileID: 637904354}
   - component: {fileID: 637904353}
-  - component: {fileID: 637904352}
   - component: {fileID: 637904351}
   - component: {fileID: 637904350}
-  - component: {fileID: 637904349}
   m_Layer: 0
   m_Name: player (1)
   m_TagString: Player
@@ -21534,18 +21532,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &637904349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637904348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e2b99130857454b9cfa4bec17e661b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &637904350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21599,44 +21585,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &637904352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637904348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1807939b029681146ab6feca15448d63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 0
-  SprintSpeed: 6
-  RotationSmoothTime: 0.12
-  SpeedChangeRate: 10
-  JumpHeight: 1.2
-  Gravity: -15
-  JumpTimeout: 0.5
-  FallTimeout: 0.15
-  Grounded: 1
-  GroundedOffset: -0.14
-  GroundedRadius: 0.28
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  AttackTimeOut: 1
-  CinemachineCameraTarget: {fileID: 0}
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
-  LockCameraPosition: 0
-  blocking: 0
-  attacking: 0
-  jump: 0
-  maxHealth: 100
-  meleeHealthBar: {fileID: 0}
-  focus: {fileID: 0}
 --- !u!95 &637904353
 Animator:
   serializedVersion: 3
@@ -22227,7 +22175,6 @@ GameObject:
   - component: {fileID: 648895781}
   - component: {fileID: 648895779}
   - component: {fileID: 648895778}
-  - component: {fileID: 648895780}
   m_Layer: 0
   m_Name: HandsomePlayer
   m_TagString: Player
@@ -22288,44 +22235,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &648895780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648895777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1807939b029681146ab6feca15448d63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 6
-  SprintSpeed: 6
-  RotationSmoothTime: 0.12
-  SpeedChangeRate: 10
-  JumpHeight: 1.2
-  Gravity: -15
-  JumpTimeout: 0.5
-  FallTimeout: 0.15
-  Grounded: 1
-  GroundedOffset: -0.14
-  GroundedRadius: 0.28
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  AttackTimeOut: 1
-  CinemachineCameraTarget: {fileID: 1874175106}
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
-  LockCameraPosition: 0
-  blocking: 0
-  attacking: 0
-  jump: 0
-  maxHealth: 100
-  meleeHealthBar: {fileID: 1781140103}
-  focus: {fileID: 0}
 --- !u!95 &648895781
 Animator:
   serializedVersion: 3
