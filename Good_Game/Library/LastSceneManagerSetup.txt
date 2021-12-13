@@ -1,0 +1,21 @@
+sceneSetups:
+- path: Assets/Scenes/PlayerScene.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
+- path: Assets/Cartoon Heroes/Scenes/Characters.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/EnemyScene.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/intro_scene.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/PettersMapV2.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
