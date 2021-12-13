@@ -18,12 +18,14 @@ public class LoadLevel : MonoBehaviour
     // }
 
     void OnCollisionEnter(Collision collision) {
+        
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.UnloadSceneAsync("intro_scene");
-            Debug.Log("unloadScene intro_scene");
-            SceneManager.LoadScene("PettersMap", LoadSceneMode.Additive);
-            Debug.Log("loadScene pettersMap");
-        }
+                SceneManager.UnloadSceneAsync("intro_scene");
+                Debug.Log("unloadScene intro_scene");
+
+                SceneManager.LoadScene("PettersMapV2", LoadSceneMode.Additive);
+                Debug.Log("loadScene pettersMap");
+            }
     }
 }

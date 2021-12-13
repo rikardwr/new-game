@@ -42,20 +42,26 @@ public class DialogueManager : MonoBehaviour
             {
                 sentences.Enqueue(sentence);
             }
-            DisplayNextSentence();
+                DisplayNextSentence();
+            
         }
     }
     public void DisplayNextSentence()
     {
-    if (sentences.Count == 0)
-        {
-            EndDialogue();
-            Cursor.visible = false;
-            return;
-        }
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        //if (other.tag == "Player" && Input.GetKeyDown(KeyCode.Space))
+        //{
+            if (sentences.Count == 0)
+            {
+                EndDialogue();
+                Cursor.visible = false;
+                return;
+            }
+
+
+            string sentence = sentences.Dequeue();
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(sentence));
+        //}
     }
 
     IEnumerator TypeSentence (string sentence)

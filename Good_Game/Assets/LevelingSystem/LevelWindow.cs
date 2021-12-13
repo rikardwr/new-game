@@ -30,6 +30,7 @@ public class LevelWindow : MonoBehaviour {
         transform.Find("experience5Btn").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(5);
         transform.Find("experience50Btn").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(50);
         transform.Find("experience500Btn").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(500);
+        
     }
 
     private void SetExperienceBarSize(float experienceNormalized) {
@@ -56,16 +57,16 @@ public class LevelWindow : MonoBehaviour {
         SetExperienceBarSize(levelSystemAnimated.GetExperienceNormalized());
 
         // Surbscribe to the changed events
-        levelSystemAnimated.OnExperienceChanged += LevelSystemAnimated_OnExperienceChanged;
-        levelSystemAnimated.OnLevelChanged += LevelSystemAnimated_OnLevelChanged;
+        levelSystemAnimated.OnExperienceChanged += LevelSystem_OnExperienceChanged;
+        levelSystemAnimated.OnLevelChanged += LevelSystem_OnLevelChanged;
     }
 
-    private void LevelSystemAnimated_OnLevelChanged(object sender, System.EventArgs e) {
+    private void LevelSystem_OnLevelChanged(object sender, System.EventArgs e) {
         // Level changed, update text
         SetLevelNumber(levelSystemAnimated.GetLevelNumber());
     }
 
-    private void LevelSystemAnimated_OnExperienceChanged(object sender, System.EventArgs e) {
+    private void LevelSystem_OnExperienceChanged(object sender, System.EventArgs e) {
         // Experience changed, update bar size
         SetExperienceBarSize(levelSystemAnimated.GetExperienceNormalized());
     }

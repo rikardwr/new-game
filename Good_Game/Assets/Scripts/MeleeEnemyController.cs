@@ -27,6 +27,8 @@ public class MeleeEnemyController : MonoBehaviour
     Animator enemyAnimator; 
 	private bool hasAnimator;
 
+
+    private LevelSystem levelSystem;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,6 +110,20 @@ public class MeleeEnemyController : MonoBehaviour
 		}
     }
 
+    public void SetLevelSystem(LevelSystem levelSysten)
+    {
+        this.levelSystem = levelSysten;
+    }
+    /*
+    public void Dead()
+    {
+        if (isAlive == true)
+        {
+            Debug.Log("The enemy is dead, you have getting xp");
+            levelSystem.AddExperience(30);
+        }
+    }
+    */
     public void OpponentTakeDamage(int damage)
     {
         // Debug.Log("EnemyMeleeController.OpponentTakeDamage() " + damage);
@@ -125,6 +141,8 @@ public class MeleeEnemyController : MonoBehaviour
             {
                 Debug.Log("Enemy diead");
                 enemyAnimator.SetTrigger("Die");
+
+                
 
                 Destroy(gameObject,5);
             }
