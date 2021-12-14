@@ -295,12 +295,12 @@ public class PlayerController : MonoBehaviour
 
 		if (!blocking)
 		{
+
 			// input.getMouseButtonDown(right mouse button)
 			if (input.block)
 			{
 				playerAnimator.Play("Unarmed-DiveRoll-Forward1");
 				input.block = false;
-
 				// Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 				// RaycastHit hit;
 
@@ -465,6 +465,7 @@ public class PlayerController : MonoBehaviour
 		// Cinemachine will follow this target
 		CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
 	}
+
 
 	private void JumpAndGravity() {
 		if (Grounded)

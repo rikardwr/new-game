@@ -39,11 +39,7 @@ public class NextScene : MonoBehaviour
         //     Pause();
         // }
        
-        /*if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            LoadNextLevel();
-        }
-        */
+        
 
     }
 

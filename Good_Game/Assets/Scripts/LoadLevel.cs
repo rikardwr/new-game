@@ -16,7 +16,7 @@ public class LoadLevel : MonoBehaviour
     // {
 
     // }[SerializeField]
-    Material[] skyboxes;
+    //Material[] skyboxes;
 
     //void Awake()
     //{
@@ -31,7 +31,7 @@ public class LoadLevel : MonoBehaviour
                 Debug.Log("unloadScene intro_scene");
 
                 SceneManager.LoadScene("PettersMapV2", LoadSceneMode.Additive);
-                RenderSettings.skybox = skyboxes[0];
+                //RenderSettings.skybox = skyboxes[0];
                 Debug.Log("loadScene pettersMap");
             }
     }

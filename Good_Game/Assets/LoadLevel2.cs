@@ -14,12 +14,12 @@ public class LoadLevel2 : MonoBehaviour
     // // Update is called once per frame
     // void Update()
     // {
-    [SerializeField]
+    //[SerializeField]
     //Material[] skyboxes;
     //public static Material skybox;
     //var otherSkybox  Material;
 
-    public Material skyOne;
+    //public Material skyOne;
 
     // }
 
@@ -40,7 +40,7 @@ public class LoadLevel2 : MonoBehaviour
             SceneManager.LoadScene("Inside_Colosseum_Night", LoadSceneMode.Additive);
             //RenderSettings.skybox = skyboxes[1];
             //UpdateEnvironment();
-            RenderSettings.skybox = skyOne;
+            //RenderSettings.skybox = skyOne;
             //RenderSettings.fog = true;
             //RenderSettings.fogDensity = 0.015f;
             Debug.Log("loadScene pettersMap");
